@@ -1,0 +1,11 @@
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\YandexDialogApi.exe
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\appsettings.Development.json
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\appsettings.json
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\YandexDialogApi.dll
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\YandexDialogApi.deps.json
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\YandexDialogApi.runtimeconfig.json
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\YandexDialogApi.pdb
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projects\YandexDialogApi\YandexDialogApi\obj\Debug\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
