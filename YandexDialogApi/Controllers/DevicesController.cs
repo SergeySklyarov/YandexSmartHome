@@ -66,6 +66,7 @@ namespace YandexDialogApi.Controllers
             [FromHeader(Name = "Authorization")] string authorization,
             [FromBody] PayloadListDevicesModel device_list)
         {
+            _logger.LogInformation("YandexAction request body: {dto}", JsonSerializer.Serialize(device_list));
             var res = new
             {
                 request_id = x_request_id,
