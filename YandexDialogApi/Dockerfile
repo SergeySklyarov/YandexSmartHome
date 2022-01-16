@@ -10,9 +10,9 @@ RUN dotnet restore -r linux-arm
 
 # Copy everything else and build
 COPY . .
-#RUN dotnet build -c Debug -o /app/build -r linux-arm
+RUN dotnet build -c Debug -o /app/build -r linux-arm
 
-#FROM build AS publish
+FROM build AS publish
 RUN dotnet publish -c Debug -o /app/publish -r linux-arm
 
 FROM base AS final
