@@ -3,18 +3,16 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal-arm32v7 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal-arm32v7 AS build
 WORKDIR /src
-COPY ["YandexDialogApi/YandexDialogApi.csproj", "YandexDialogApi/"]
-RUN dotnet restore "YandexDialogApi/YandexDialogApi.csproj" -r linux-arm
+COPY *.csproj ./
+RUN dotnet restore -r linux-arm
 COPY . .
-WORKDIR "/src/YandexDialogApi"
-RUN dotnet build "YandexDialogApi.csproj" -c Debug -o /app/build -r linux-arm
+RUN dotnet build -c Debug -o /app/build -r linux-arm
 
 FROM build AS publish
-RUN dotnet publish "YandexDialogApi.csproj" -c Debug -o /app/publish -r linux-arm
+RUN dotnet publish -c Debug -o /app/publish -r linux-arm
 
 FROM base AS final
 WORKDIR /app
