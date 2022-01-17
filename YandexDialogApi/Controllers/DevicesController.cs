@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 using YandexDialogApi.Models.Requests;
+using YandexDialogApi.Services;
 
 namespace YandexDialogApi.Controllers
 {
@@ -14,10 +12,12 @@ namespace YandexDialogApi.Controllers
     public class DevicesController : Controller
     {
         private readonly ILogger<DevicesController> _logger;
+        private readonly IGpioService _gpioService;
 
-        public DevicesController(ILogger<DevicesController> logger)
+        public DevicesController(ILogger<DevicesController> logger, IGpioService gpioService)
         {
             _logger = logger;
+            _gpioService = gpioService;
         }
 
         [HttpHead("/v1.0")]
@@ -98,6 +98,8 @@ namespace YandexDialogApi.Controllers
         {
             _logger.LogInformation("YandexQuery request body: {dto}", JsonSerializer.Serialize(dev_list));
 
+            var ledValue = _gpioService.GetPinValue(6);
+
             var res = new
             {
                 request_id = x_request_id,
@@ -110,7 +112,7 @@ namespace YandexDialogApi.Controllers
                                 new
                                 {
                                     type= "devices.capabilities.on_off",
-                                    state=new { instance = "on", value=true }
+                                    state=new { instance = "on", value=ledValue }
                                 }
                             }
                         }
