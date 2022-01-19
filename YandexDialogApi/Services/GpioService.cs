@@ -39,7 +39,7 @@ namespace YandexDialogApi.Services
         {
             try
             {
-                _controller.Write(pin, ((value) ? PinValue.High : PinValue.Low));
+                _controller?.Write(pin, ((value) ? PinValue.High : PinValue.Low));
             }
             catch (Exception ex)
             {
