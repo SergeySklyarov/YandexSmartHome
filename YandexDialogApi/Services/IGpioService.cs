@@ -8,5 +8,6 @@ namespace YandexDialogApi.Services
     public interface IGpioService
     {
         bool GetPinValue(int pin);
+        void SetPinValue(int pin, bool value);
     }
 }

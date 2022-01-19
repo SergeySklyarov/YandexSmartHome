@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Text.Json;
 using YandexDialogApi.Models.Requests;
 using YandexDialogApi.Services;
@@ -67,6 +68,21 @@ namespace YandexDialogApi.Controllers
             [FromBody] PayloadListDevicesModel device_list)
         {
             _logger.LogInformation("YandexAction request body: {dto}", JsonSerializer.Serialize(device_list));
+
+            foreach(var device in device_list.payload.devices)
+            {
+                foreach(var cap in device.capabilities)
+                {
+                    if (cap.type == "devices.capabilities.on_off")
+                    {
+                        var jState = (JsonElement)cap.state.value;
+                        var newValue = jState.ValueKind == JsonValueKind.True;
+
+                        _gpioService.SetPinValue(6, newValue);
+                    }
+                }
+            }
+
             var res = new
             {
                 request_id = x_request_id,
@@ -78,8 +94,8 @@ namespace YandexDialogApi.Controllers
                             {
                                 new
                                 {
-                                    type= "devices.capabilities.on_off",
-                                    state=new { instance = "on", action_result=new{ status = "DONE"} }
+                                    type = "devices.capabilities.on_off",
+                                    state = new { instance = "on", action_result = new { status = "DONE"} }
                                 }
                             }
                         }
